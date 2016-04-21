@@ -34,7 +34,7 @@ class SymlinkCommand extends ContainerAwareCommand
 
         $tinymcePath = sprintf('%s/../vendor/tinymce/tinymce', $this->getContainer()->getParameter('kernel.root_dir'));
 
-        $this->getFilesystem()->symlink($tinymcePath, $localPath, true);
+        $this->getFilesystem()->mirror($tinymcePath, $localPath);
         if (!file_exists($localPath)) {
             throw new IOException('Symbolic link is broken');
         }
